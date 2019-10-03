@@ -1,11 +1,9 @@
-import React, { useContext } from 'react';
+import React from 'react';
+import SearchBar from '../SearchBar/SearchBar';
+import SearchResults from '../SearchResults/SearchResults';
+import Playlist from '../Playlist/Playlist';
+import { PlaylistProvider } from '../Context/PlaylistContext';
 import './App.css';
-import SearchBar from '../SearchBar/SearchBar'
-import SearchResults from '../SearchResults/SearchResults'
-import Playlist from '../Playlist/Playlist'
-import Tracklist from '../TrackList/TrackList'
-import { PlaylistProvider } from '../Context/PlaylistContext'
-//import { PlaylistContext } from '../Context/PlaylistContext'
 
 
 function App() {

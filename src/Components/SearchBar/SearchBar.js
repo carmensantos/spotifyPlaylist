@@ -1,25 +1,23 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import './SearchBar.css'
 import { PlaylistContext } from '../Context/PlaylistContext';
-
+import { spotifySearch } from '../../util/Spotify';
 
 export default function SearchBar(props){
 
     const infoContext = useContext(PlaylistContext);
 
-    function handleChange(e) {
-        infoContext.setSearch(e.target.value);
-    }
-
-    function submitSearch(e) {
+    function submitSearch(search) {
         //sendSearch -> send to spotify API
-        console.log('search criteria: ' + e + ' - submited to spotify API')
+        spotifySearch(search).then(searchResults => {
+            infoContext.setSearchResult(searchResults);
+        });
+        console.log('search criteria: ' + search + ' - submited to spotify API')
     }
     return(
         <div className="SearchBar">
             <input
             placeholder="Enter A Song, Album, or Artist"
-            onChange={e => handleChange(e)}
             />
             <button className="SearchButton" onClick={() => submitSearch(infoContext.sendSearch)}>SEARCH</button>
         </div>  

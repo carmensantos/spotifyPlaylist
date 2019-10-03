@@ -3,30 +3,25 @@ import React, { useState, createContext } from 'react';
 export const PlaylistContext = createContext();
 
 export function PlaylistProvider(props) {
+
+    const [playlist, setPlaylist] = useState([{name: 'trackname1', artist: 'artist1', 
+            album: 'album1', id: 1}, {name: 'trackname2', artist: 'artist2', 
+            album: 'album2', id: 2}, {name: 'trackname10', artist: 'artist10', 
+            album: 'album10', id: 10}]);
+    const [searchResult, setSearchResult] = useState([{name: 'trackname3', artist: 'artist3', 
+            album: 'album3', id: 3}, {name: 'trackname4', artist: 'artist4', 
+            album: 'album4', id: 4}, {name: 'trackname5', artist: 'artist5', 
+            album: 'album5', id: 5}])
+    const [playlistName, setPlaylistName] = useState('playlistName')
     
-    const [playlist, setPlaylist] = useState('playlistName');
-    const [trackId, setTrackId] = useState('id');
-    const [trackName, setTrackName] = useState('trackName');
-    const [trackArtist, setTrackArtist] = useState('trackArtist');
-    const [trackAlbum, setTrackAlbum] = useState('trackAlbum');
-    const [sendSearch, setSearch] = useState("this is what I'm searching for");
-    const [searchResult, setSearchResult] = useState('this is the result of my search');
 
     const infoContext = {
         playlist,
         setPlaylist,
-        trackId,
-        setTrackId,
-        trackName,
-        setTrackName, 
-        trackArtist,
-        setTrackArtist,
-        trackAlbum,
-        setTrackAlbum,
-        sendSearch,
-        setSearch,
         searchResult,
-        setSearchResult
+        setSearchResult,
+        playlistName,
+        setPlaylistName
     }
     return(
         <PlaylistContext.Provider value={infoContext} >

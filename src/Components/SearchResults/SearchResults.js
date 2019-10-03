@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import './SearchResults.css';
 import TrackList from '../TrackList/TrackList';
 import { PlaylistContext } from '../Context/PlaylistContext'
@@ -14,6 +14,7 @@ export default function SearchResults(props){
         </div>
     )
 }
+
 
 /*
 export class SearchResults extends React.Component {
