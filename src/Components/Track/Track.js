@@ -20,16 +20,13 @@ export default function Track(props) {
         } else {
             alert('This song already exists in your playlist ' + infoContext.playlistName)
         }
-        console.log('The song ' + track + ' was added to your playlist ' + infoContext.playlistName)
+        console.log('The song ' + track.name + ' was added to your playlist ' + infoContext.playlistName)
     }
 
     function removeTrack(track) {
-        if (infoContext.playlist.some(element => element.id === track.id)) {
-            console.log(infoContext.playlist)
-            infoContext.playlist.splice(infoContext.playlist.indexOf(track), 1);
-            infoContext.setPlaylist(infoContext.playlist)
-            console.log(infoContext.playlist)
-        } 
+        let tracks = infoContext.playlist;
+        tracks = tracks.filter(currentTrack => currentTrack.id !== track.id);
+        infoContext.setPlaylist(tracks);
     }
     
     return (

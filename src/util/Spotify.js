@@ -1,7 +1,7 @@
 let userToken; 
 let expTime;
-const clientID = '7c44f5a036ec4681b0bc9fa35d003bc1';
-const redirectURI = 'http://localhost:3000/';
+const clientID = '';
+const redirectURI = '';
 
 
 module.exports = {
@@ -16,14 +16,12 @@ module.exports = {
         
         const userTokenMatch = pageLoc.match(/access_token=([^&]*)/);
         const expTimeMatch = pageLoc.match(/expires_in=([^&]*)/);
-
+        
         if (userTokenMatch && expTimeMatch) {
             userToken = userTokenMatch[1];
             expTime = Number(expTimeMatch[1]);
-            console.log('works')
             window.setTimeout(() => userToken = '', expTime * 1000);
             window.history.pushState('Access Token', null, '/');
-            console.log('works')
             return userToken;
         } else {
             const accessUrl = 'https://accounts.spotify.com/authorize?client_id=' + clientID + '&response_type=token&scope=playlist-modify-public&redirect_uri=' + redirectURI;
@@ -55,15 +53,16 @@ module.exports = {
     },
 
     spotifySave(playlistName, tracks) {
+        console.log(tracks)
         if (!playlistName || !tracks) {
-            return [];
+            return;
         }
 
         const accessToken_ = module.exports.getAccessToken();
-        const headers= { Authorization: 'Bearer' + accessToken_}
+        const headers = { Authorization: 'Bearer ' + accessToken_}
         let userId;
 
-        return fetch('https://api.spotify.com/v1/me', { headers: headers}
+        return fetch('https://api.spotify.com/v1/me', { headers: headers }
             ).then(response => response.json()
             ).then(jsonResponse => {
                 userId = jsonResponse.id;
@@ -76,12 +75,12 @@ module.exports = {
                 }).then(response => response.json()
                 ).then(jsonResponse => {
                     const playlistId = jsonResponse.id;
-                    return fetch('https://api.spotify.com/v1/users/' + userId + 'playlists/' + playlistId + '/tracks',
+                    return fetch('https://api.spotify.com/v1/playlists/' + playlistId + '/tracks',
                     {
                         headers: headers,
                         method: 'POST',
                         body: JSON.stringify({ uris: tracks })
-                    }).then(() => console.log('Saved playlist to spotify.'));
+                    });
                 })
             });
 

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import './SearchResults.css';
 import TrackList from '../TrackList/TrackList';
-import { PlaylistContext } from '../Context/PlaylistContext'
+import { PlaylistContext } from '../Context/PlaylistContext';
+import './SearchResults.css';
 
 export default function SearchResults(props){
 
@@ -15,19 +15,3 @@ export default function SearchResults(props){
     )
 }
 
-
-/*
-export class SearchResults extends React.Component {
-
-    render() {
-
-        return(
-            <div className="SearchResults">
-                <h2>{this.props.SearchResults}</h2>
-                <TrackList tracks = {this.props.SearchResults} />
-            </div>
-
-        )
-    }
-}
-*/
