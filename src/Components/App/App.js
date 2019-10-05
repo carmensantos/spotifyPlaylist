@@ -10,7 +10,7 @@ function App() {
   return(
     <PlaylistProvider>
       <div>
-      <h1>Ja<span className="highlight">mmm</span>ing</h1>
+      <h1>Spoti<span className="highlight">fy</span>Playlist</h1>
       <div className="App">
         <SearchBar />
         <div className="App-playlist">

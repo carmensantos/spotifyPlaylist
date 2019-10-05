@@ -1,5 +1,9 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Idea credits to Codecademy Jamming Project.
+
+Before running, go to src/util/Spotify.js and set redirectURI to http://localhost:3000 and clientID to your spotify client ID.
+
 ## Available Scripts
 
 In the project directory, you can run:

@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
-import './SearchBar.css'
 import { PlaylistContext } from '../Context/PlaylistContext';
 import { spotifySearch } from '../../util/Spotify';
+import './SearchBar.css'
 
 export default function SearchBar(){
 
